@@ -32,3 +32,19 @@ This project is licensed under the MIT License.
 ## Custom styling
 
 Global styling lives in `styles/custom-style.css`. Edit that file to change the full site theme in one place.
+
+
+## Theme skins
+
+The site includes a unified custom style with multiple skins. Use the floating **Skin** picker in the bottom-right corner to switch between:
+
+- Default
+- Glass
+- GitHub
+- Nord
+- Dracula
+- Apple
+- Minimal
+- Cyberpunk
+
+The selected skin is saved in `localStorage` and restored on the next visit.
