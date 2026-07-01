@@ -27,3 +27,8 @@ Then, run `pnpm dev` to start the development server and visit localhost:3000.
 ## License
 
 This project is licensed under the MIT License.
+
+
+## Custom styling
+
+Global styling lives in `styles/custom-style.css`. Edit that file to change the full site theme in one place.
