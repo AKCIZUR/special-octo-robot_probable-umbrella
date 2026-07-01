@@ -1,125 +1,155 @@
-/* Unified custom style for Nextra docs */
+/* ============================================================
+   Nextra Custom Theme – refined, accessible, performant
+   ============================================================ */
 
-/* Theme tokens */
+/* ---------- Colour palette (HSL for easy tweaking) ---------- */
 :root {
-  --bg: #f7f7fb;
-  --bg-elevated: rgba(255, 255, 255, 0.82);
-  --bg-solid: #ffffff;
-  --text: #101828;
-  --muted: #667085;
-  --border: rgba(16, 24, 40, 0.10);
-  --border-strong: rgba(16, 24, 40, 0.16);
-  --primary: #4f46e5;
-  --primary-strong: #4338ca;
-  --primary-soft: rgba(79, 70, 229, 0.10);
-  --shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
-  --radius: 18px;
+  /* Neutrals */
+  --h-bg: 220;
+  --s-bg: 20%;
+  --l-bg: 97%;           /* #f7f7fb */
+  --l-bg-elevated: 96%;
+  --l-bg-solid: 100%;
+  --l-text: 12%;         /* #101828 */
+  --l-muted: 45%;        /* #667085 */
+
+  /* Primary */
+  --h-primary: 240;
+  --s-primary: 76%;
+  --l-primary: 54%;      /* #4f46e5 */
+  --l-primary-strong: 46%;
+  --l-primary-soft: 92%;
+
+  /* Borders */
+  --l-border: 88%;
+  --l-border-strong: 82%;
+
+  /* Shadows */
+  --shadow-color: 220 15% 20%;
+  --shadow-blur: 60px;
 }
 
 html.dark {
-  --bg: #0b1020;
-  --bg-elevated: rgba(15, 23, 42, 0.72);
-  --bg-solid: #0f172a;
-  --text: #e5e7eb;
-  --muted: #94a3b8;
-  --border: rgba(148, 163, 184, 0.16);
-  --border-strong: rgba(148, 163, 184, 0.22);
-  --primary: #8b5cf6;
-  --primary-strong: #7c3aed;
-  --primary-soft: rgba(139, 92, 246, 0.16);
-  --shadow: 0 22px 60px rgba(0, 0, 0, 0.35);
+  --l-bg: 10%;           /* #0b1020 */
+  --l-bg-elevated: 16%;
+  --l-bg-solid: 12%;
+  --l-text: 92%;         /* #e5e7eb */
+  --l-muted: 68%;        /* #94a3b8 */
+  --l-primary: 68%;      /* #8b5cf6 */
+  --l-primary-strong: 60%;
+  --l-primary-soft: 18%;
+  --l-border: 18%;
+  --l-border-strong: 24%;
+  --shadow-color: 0 0% 0%;
 }
 
-/* Base */
-html, body {
-  background:
-    radial-gradient(circle at top left, rgba(79, 70, 229, 0.08), transparent 30%),
-    radial-gradient(circle at top right, rgba(14, 165, 233, 0.06), transparent 24%),
-    var(--bg);
-  color: var(--text);
-}
-
+/* ---------- Base & theme switching ---------- */
+html,
 body {
-  font-feature-settings: "ss01" 1, "cv01" 1, "cv02" 1;
+  color: hsl(var(--h-bg), var(--s-bg), var(--l-text));
+  background:
+    radial-gradient(circle at 10% 20%, hsla(var(--h-primary), var(--s-primary), var(--l-primary), 0.06), transparent 40%),
+    radial-gradient(circle at 80% 70%, hsla(210, 80%, 60%, 0.04), transparent 30%),
+    hsl(var(--h-bg), var(--s-bg), var(--l-bg));
+  transition: background 0.3s ease, color 0.2s ease;
+}
+
+/* Smooth theme switch for all elements */
+* {
+  transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, color 0.15s ease;
 }
 
 ::selection {
-  background: var(--primary-soft);
-  color: var(--text);
+  background: hsla(var(--h-primary), var(--s-primary), var(--l-primary), 0.25);
+  color: hsl(var(--h-bg), var(--s-bg), var(--l-text));
 }
 
-/* Typography */
+/* ---------- Typography ---------- */
+body {
+  font-feature-settings: "ss01" 1, "cv01" 1, "cv02" 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 .nx-content {
-  color: var(--text);
+  color: hsl(var(--h-bg), var(--s-bg), var(--l-text));
 }
 
 .nx-content h1,
 .nx-content h2,
 .nx-content h3,
 .nx-content h4 {
-  letter-spacing: -0.03em;
+  letter-spacing: -0.025em;
+  font-weight: 650;
+  line-height: 1.2;
+}
+
+.nx-content h1 {
+  font-size: 2.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.nx-content h2 {
+  margin-top: 2.8rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid hsl(var(--h-bg), var(--s-bg), var(--l-border));
 }
 
 .nx-content p,
-.nx-content li {
-  color: var(--text);
-}
-
-.nx-content p,
-.nx-content ul,
-.nx-content ol,
+.nx-content li,
 .nx-content blockquote,
 .nx-content table {
-  color: var(--text);
+  line-height: 1.7;
+  color: hsl(var(--h-bg), var(--s-bg), var(--l-text));
 }
 
-/* Links */
+/* ---------- Links ---------- */
 .nx-content a,
 .nx-link {
-  color: var(--primary);
-  text-decoration-thickness: 2px;
+  color: hsl(var(--h-primary), var(--s-primary), var(--l-primary));
+  text-decoration-thickness: 1.5px;
   text-underline-offset: 3px;
+  transition: color 0.2s, text-decoration-color 0.2s;
 }
 
 .nx-content a:hover,
 .nx-link:hover {
-  color: var(--primary-strong);
+  color: hsl(var(--h-primary), var(--s-primary), var(--l-primary-strong));
+  text-decoration-color: currentColor;
 }
 
-/* Top navbar */
+/* ---------- Navigation (top bar) ---------- */
 .nx-navbar {
-  background: var(--bg-elevated);
-  backdrop-filter: blur(18px);
-  border-bottom: 1px solid var(--border);
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04) inset;
+  background: hsla(var(--h-bg), var(--s-bg), var(--l-bg-elevated), 0.75);
+  backdrop-filter: blur(16px) saturate(1.2);
+  -webkit-backdrop-filter: blur(16px) saturate(1.2);
+  border-bottom: 1px solid hsl(var(--h-bg), var(--s-bg), var(--l-border));
+  box-shadow: 0 1px 2px hsla(var(--shadow-color), 0.04);
 }
 
-/* Sidebar */
+/* ---------- Sidebar ---------- */
 .nx-sidebar {
   background: transparent;
 }
 
-.nx-sidebar .nx-mt-2,
-.nx-sidebar .nx-my-2 {
-  margin-top: 0.5rem;
-}
-
 .nx-sidebar a {
-  border-radius: 12px;
-  transition: background-color 180ms ease, color 180ms ease, transform 180ms ease;
+  border-radius: 10px;
+  padding: 0.4rem 0.8rem;
+  transition: background 0.15s, color 0.15s, transform 0.1s;
 }
 
 .nx-sidebar a:hover {
-  background: rgba(79, 70, 229, 0.08);
+  background: hsla(var(--h-primary), var(--s-primary), var(--l-primary), 0.08);
 }
 
 .nx-sidebar a[aria-current="page"] {
-  background: var(--primary-soft);
-  color: var(--primary-strong);
+  background: hsla(var(--h-primary), var(--s-primary), var(--l-primary), 0.12);
+  color: hsl(var(--h-primary), var(--s-primary), var(--l-primary-strong));
   font-weight: 600;
+  box-shadow: inset 3px 0 0 hsl(var(--h-primary), var(--s-primary), var(--l-primary));
 }
 
-/* Content area */
+/* ---------- Content area ---------- */
 .nx-content {
   max-width: 1100px;
 }
@@ -128,49 +158,62 @@ body {
   margin-top: 0;
 }
 
-.nx-content h1 {
-  margin-bottom: 0.85rem;
-}
-
-.nx-content h2 {
-  margin-top: 2.2rem;
-  padding-top: 0.3rem;
-  border-top: 1px solid var(--border);
-}
-
-/* Code blocks */
+/* ---------- Code blocks ---------- */
 .nx-content pre,
 .nx-content code {
-  border-color: var(--border);
+  border-color: hsl(var(--h-bg), var(--s-bg), var(--l-border));
 }
 
 .nx-content pre {
-  background: rgba(15, 23, 42, 0.95);
-  border-radius: 16px;
-  box-shadow: var(--shadow);
+  background: hsl(220, 15%, 8%);
+  border-radius: 14px;
+  box-shadow: 0 12px 40px hsla(var(--shadow-color), 0.08);
+  padding: 1.2rem;
 }
 
-/* Cards / callouts */
+html.dark .nx-content pre {
+  background: hsl(220, 15%, 6%);
+  box-shadow: 0 12px 40px hsla(0, 0%, 0%, 0.4);
+}
+
+/* Inline code */
+.nx-content code:not(pre code) {
+  background: hsla(var(--h-bg), var(--s-bg), var(--l-bg-elevated), 0.6);
+  padding: 0.15rem 0.4rem;
+  border-radius: 6px;
+  font-size: 0.9em;
+  border: 1px solid hsl(var(--h-bg), var(--s-bg), var(--l-border));
+}
+
+/* ---------- Cards / callouts / blockquotes ---------- */
 .nx-callout,
 blockquote {
-  border-radius: var(--radius);
-  border: 1px solid var(--border);
-  background: var(--bg-elevated);
-  box-shadow: var(--shadow);
+  border-radius: 16px;
+  border: 1px solid hsl(var(--h-bg), var(--s-bg), var(--l-border));
+  background: hsla(var(--h-bg), var(--s-bg), var(--l-bg-elevated), 0.5);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  box-shadow: 0 8px 28px hsla(var(--shadow-color), 0.06);
+  padding: 1.5rem;
 }
 
-/* Buttons */
+/* ---------- Buttons & interactive elements ---------- */
 .button,
 .counter,
 button,
 input[type="button"],
 input[type="submit"] {
-  border-radius: 14px;
-  border: 1px solid var(--border-strong);
-  background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(255,255,255,0.86));
-  color: var(--text);
-  box-shadow: 0 10px 26px rgba(15, 23, 42, 0.08);
-  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+  border-radius: 12px;
+  border: 1px solid hsl(var(--h-bg), var(--s-bg), var(--l-border-strong));
+  background: hsla(var(--h-bg), var(--s-bg), var(--l-bg-solid), 0.9);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  color: hsl(var(--h-bg), var(--s-bg), var(--l-text));
+  box-shadow: 0 6px 20px hsla(var(--shadow-color), 0.05);
+  padding: 0.6rem 1.2rem;
+  font-weight: 500;
+  transition: all 0.15s ease;
+  cursor: pointer;
 }
 
 html.dark .button,
@@ -178,7 +221,8 @@ html.dark .counter,
 html.dark button,
 html.dark input[type="button"],
 html.dark input[type="submit"] {
-  background: linear-gradient(180deg, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.82));
+  background: hsla(var(--h-bg), var(--s-bg), var(--l-bg-elevated), 0.8);
+  border-color: hsl(var(--h-bg), var(--s-bg), var(--l-border-strong));
 }
 
 .button:hover,
@@ -187,24 +231,138 @@ button:hover,
 input[type="button"]:hover,
 input[type="submit"]:hover {
   transform: translateY(-1px);
-  border-color: var(--primary);
-  box-shadow: 0 16px 30px rgba(15, 23, 42, 0.12);
+  border-color: hsl(var(--h-primary), var(--s-primary), var(--l-primary));
+  box-shadow: 0 12px 32px hsla(var(--shadow-color), 0.12);
 }
 
-/* Tables */
+.button:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid hsl(var(--h-primary), var(--s-primary), var(--l-primary));
+  outline-offset: 2px;
+}
+
+/* ---------- Tables ---------- */
 .nx-content table {
-  border-radius: 16px;
+  border-radius: 14px;
   overflow: hidden;
-  border: 1px solid var(--border);
+  border: 1px solid hsl(var(--h-bg), var(--s-bg), var(--l-border));
+  box-shadow: 0 6px 20px hsla(var(--shadow-color), 0.04);
 }
 
 .nx-content th,
 .nx-content td {
-  border-color: var(--border);
+  border-color: hsl(var(--h-bg), var(--s-bg), var(--l-border));
+  padding: 0.8rem 1.2rem;
 }
 
-/* Footer */
+.nx-content th {
+  background: hsla(var(--h-bg), var(--s-bg), var(--l-bg-elevated), 0.4);
+  font-weight: 600;
+}
+
+/* ---------- Footer ---------- */
 .nx-footer {
-  border-top: 1px solid var(--border);
-  color: var(--muted);
+  border-top: 1px solid hsl(var(--h-bg), var(--s-bg), var(--l-border));
+  color: hsl(var(--h-bg), var(--s-bg), var(--l-muted));
+  font-size: 0.9rem;
+  padding: 2rem 0;
+}
+
+/* ---------- Additional Nextra components ---------- */
+/* Tabs */
+.nx-tabs {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid hsl(var(--h-bg), var(--s-bg), var(--l-border));
+}
+
+.nx-tabs .nx-tab {
+  background: transparent;
+  border: none;
+  color: hsl(var(--h-bg), var(--s-bg), var(--l-muted));
+  padding: 0.6rem 1.2rem;
+  font-weight: 500;
+}
+
+.nx-tabs .nx-tab[aria-selected="true"] {
+  color: hsl(var(--h-primary), var(--s-primary), var(--l-primary));
+  border-bottom: 2px solid hsl(var(--h-primary), var(--s-primary), var(--l-primary));
+}
+
+/* Details / accordion */
+.nx-details summary {
+  cursor: pointer;
+  font-weight: 600;
+  padding: 0.6rem 1rem;
+  border-radius: 10px;
+  transition: background 0.15s;
+}
+
+.nx-details summary:hover {
+  background: hsla(var(--h-bg), var(--s-bg), var(--l-bg-elevated), 0.5);
+}
+
+/* Search input */
+.nx-search input {
+  background: hsla(var(--h-bg), var(--s-bg), var(--l-bg-elevated), 0.5);
+  backdrop-filter: blur(4px);
+  border: 1px solid hsl(var(--h-bg), var(--s-bg), var(--l-border));
+  border-radius: 40px;
+  padding: 0.5rem 1.2rem;
+  color: hsl(var(--h-bg), var(--s-bg), var(--l-text));
+}
+
+.nx-search input:focus {
+  border-color: hsl(var(--h-primary), var(--s-primary), var(--l-primary));
+  box-shadow: 0 0 0 3px hsla(var(--h-primary), var(--s-primary), var(--l-primary), 0.15);
+}
+
+/* Table of Contents (TOC) */
+.nx-toc {
+  border-left: 2px solid hsl(var(--h-bg), var(--s-bg), var(--l-border));
+}
+
+.nx-toc a {
+  color: hsl(var(--h-bg), var(--s-bg), var(--l-muted));
+}
+
+.nx-toc a[aria-current="true"] {
+  color: hsl(var(--h-primary), var(--s-primary), var(--l-primary));
+  font-weight: 500;
+}
+
+/* ---------- Scrollbar (optional) ---------- */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--h-bg), var(--s-bg), var(--l-border-strong));
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--h-bg), var(--s-bg), var(--l-muted));
+}
+
+/* ---------- Responsive fine-tuning ---------- */
+@media (max-width: 768px) {
+  .nx-content h1 {
+    font-size: 2rem;
+  }
+  .nx-content h2 {
+    font-size: 1.5rem;
+  }
+  .nx-navbar {
+    backdrop-filter: blur(12px);
+  }
+  .nx-sidebar a {
+    padding: 0.3rem 0.6rem;
+  }
 }
