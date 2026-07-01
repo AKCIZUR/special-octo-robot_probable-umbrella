@@ -6,8 +6,8 @@ const themeInitScript = `
   try {
     const THEME_STORAGE_KEY = 'nextra-theme-pack'
     const MODE_STORAGE_KEY = 'nextra-theme-mode'
-    const themes = new Set(${json.dumps(THEME_IDS)})
-    const modes = new Set(${json.dumps(THEME_MODES)})
+    const themes = new Set(${JSON.stringify(THEME_IDS)})
+    const modes = new Set(${JSON.stringify(THEME_MODES)})
 
     const savedTheme = localStorage.getItem(THEME_STORAGE_KEY)
     const savedMode = localStorage.getItem(MODE_STORAGE_KEY)
