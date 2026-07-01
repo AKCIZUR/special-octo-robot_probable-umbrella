@@ -1,24 +1,25 @@
-# Theme Studio Template
+# Once UI Docs Template
 
-GitHub Pages ready documentation template built with Nextra.
+Nextra 4 documentation template styled as an Once UI core kit.
 
-## Features
+## What is included
 
-- automatic deploy on push to `main`
-- GitHub Pages friendly base path handling
+- local development with `pnpm dev`
+- production static export for GitHub Pages
 - 6 theme packs with light and dark variants
+- separate pack and mode controls
 - one shared `styles/custom-style.css`
-- floating theme switcher with persistence
+- floating controls with persistence
 - theme pack preview cards on the homepage
 
 ## Theme packs
 
-- Default
+- Core
+- Paper
 - Glass
-- GitHub
-- Nord
-- Dracula
-- Apple
+- Graphite
+- Neon
+- Mono
 
 ## Local development
 
@@ -27,23 +28,30 @@ pnpm install
 pnpm dev
 ```
 
-## Build
+## Production build
 
 ```bash
 pnpm build
-pnpm export
+```
+
+The static output is written to `out/`.
+
+## Static preview
+
+```bash
+pnpm start
 ```
 
 ## GitHub Pages
 
-The workflow in `.github/workflows/deploy.yml` builds the app and publishes `out/` to Pages on every push to `main`.
+The workflow in `.github/workflows/deploy.yml` publishes the static `out/` directory on every push to `main`.
 
-## Customization
+## Main files
 
-The whole visual system is driven by:
-
+- `next.config.mjs`
+- `app/layout.tsx`
+- `mdx-components.tsx`
 - `styles/custom-style.css`
 - `components/theme-packs.ts`
 - `components/theme-switcher.tsx`
-
-Add or modify packs by changing those files only.
+- `components/theme-pack-grid.tsx`

@@ -1,4 +1,5 @@
-export type ThemeId = 'default' | 'glass' | 'github' | 'nord' | 'dracula' | 'apple'
+export type ThemeId = 'core' | 'paper' | 'glass' | 'graphite' | 'neon' | 'mono'
+export type ThemeMode = 'auto' | 'light' | 'dark'
 
 export type ThemePack = {
   id: ThemeId
@@ -12,64 +13,68 @@ export type ThemePack = {
 
 export const THEME_PACKS: ThemePack[] = [
   {
-    id: 'default',
-    label: 'Default',
-    summary: 'Clean docs layout with balanced contrast and a neutral blue accent.',
-    light: 'Bright, readable, and neutral.',
-    dark: 'System adaptive dark mode.',
-    accent: 'Indigo',
-    surface: ['#ffffff', '#f7f7fb', '#4f46e5', '#0f172a'],
+    id: 'core',
+    label: 'Core',
+    summary: 'Canonical Once UI feel: crisp, calm, balanced and product-ready.',
+    light: 'Bright, airy, editorial surfaces.',
+    dark: 'Soft charcoal depth with violet accents.',
+    accent: 'Violet',
+    surface: ['#ffffff', '#f5f3ff', '#7c3aed', '#111827'],
+  },
+  {
+    id: 'paper',
+    label: 'Paper',
+    summary: 'Warm documentation look with clean whitespace and subtle borders.',
+    light: 'Soft paper tones and gentle contrast.',
+    dark: 'Ink-on-paper dark mode.',
+    accent: 'Amber',
+    surface: ['#fffbf5', '#fff7ed', '#d97706', '#1f2937'],
   },
   {
     id: 'glass',
     label: 'Glass',
-    summary: 'Soft glassmorphism with airy surfaces and translucent layers.',
-    light: 'Frosted cards and bright highlights.',
-    dark: 'Muted glass with neon-blue accents.',
-    accent: 'Blue',
-    surface: ['#ffffff', '#eff6ff', '#2563eb', '#0f172a'],
-  },
-  {
-    id: 'github',
-    label: 'GitHub',
-    summary: 'Docs UI inspired by GitHub: calm, compact, and content-first.',
-    light: 'Light editor-like documentation.',
-    dark: 'GitHub dark with subtle borders.',
-    accent: 'Blue',
-    surface: ['#ffffff', '#f6f8fa', '#0969da', '#0d1117'],
-  },
-  {
-    id: 'nord',
-    label: 'Nord',
-    summary: 'Cold, soft palette with a focused documentation feel.',
-    light: 'Nord day palette.',
-    dark: 'Nord night palette.',
+    summary: 'Translucent layers, blurred panels and floating controls.',
+    light: 'Frosted glass over a pale canvas.',
+    dark: 'Acrylic depth with glow edges.',
     accent: 'Cyan',
-    surface: ['#eceff4', '#e5e9f0', '#88c0d0', '#2e3440'],
+    surface: ['#ffffff', '#eff6ff', '#06b6d4', '#0f172a'],
   },
   {
-    id: 'dracula',
-    label: 'Dracula',
-    summary: 'High-contrast violet and pink for a bold terminal-inspired kit.',
-    light: 'Pastel lavender with pink highlights.',
-    dark: 'Classic Dracula with rich contrast.',
+    id: 'graphite',
+    label: 'Graphite',
+    summary: 'Neutral, high-precision UI with compact spacing and strong hierarchy.',
+    light: 'Soft graphite with precise lines.',
+    dark: 'Dense graphite with cool borders.',
+    accent: 'Slate',
+    surface: ['#f8fafc', '#e2e8f0', '#475569', '#0f172a'],
+  },
+  {
+    id: 'neon',
+    label: 'Neon',
+    summary: 'A sharper kit with lively gradients and stronger UI accents.',
+    light: 'Radiant pastel accents on white.',
+    dark: 'Electric glow with deep purple base.',
     accent: 'Pink',
-    surface: ['#f8f8f2', '#f1f1f8', '#ff79c6', '#282a36'],
+    surface: ['#fff1f2', '#f5f3ff', '#ec4899', '#111827'],
   },
   {
-    id: 'apple',
-    label: 'Apple',
-    summary: 'Rounded, elegant, and minimal with a system feel.',
-    light: 'iOS and macOS inspired daylight.',
-    dark: 'Apple dark with soft borders.',
-    accent: 'Blue',
-    surface: ['#ffffff', '#f5f5f7', '#007aff', '#1d1d1f'],
+    id: 'mono',
+    label: 'Mono',
+    summary: 'Black and white first, ideal for editorial or code-heavy docs.',
+    light: 'Minimal monochrome daylight.',
+    dark: 'True mono with strong contrast.',
+    accent: 'Neutral',
+    surface: ['#ffffff', '#f4f4f5', '#18181b', '#09090b'],
   },
 ]
 
 export const THEME_IDS = THEME_PACKS.map((theme) => theme.id)
-export const DARK_THEME_IDS: ThemeId[] = ['default', 'glass', 'github', 'nord', 'dracula', 'apple']
+export const THEME_MODES: ThemeMode[] = ['auto', 'light', 'dark']
 
 export function isValidTheme(value: string | null | undefined): value is ThemeId {
   return THEME_IDS.includes(value as ThemeId)
+}
+
+export function isValidMode(value: string | null | undefined): value is ThemeMode {
+  return THEME_MODES.includes(value as ThemeMode)
 }
