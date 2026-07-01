@@ -1,6 +1,9 @@
 import nextra from 'nextra'
 
-const withNextra = nextra()
+const withNextra = nextra({
+  theme: 'nextra-theme-docs', // or your preferred theme
+  themeConfig: './theme.config.tsx', // path to your theme config
+})
 
 const githubRepository = process.env.GITHUB_REPOSITORY || ''
 const repositoryName = githubRepository.split('/')[1] || ''
